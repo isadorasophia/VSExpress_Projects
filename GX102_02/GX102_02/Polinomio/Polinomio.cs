@@ -8,37 +8,37 @@ namespace GX102_02
 {
     class Polinomio
     {
-        List<Termo> polinomioX = new List<Termo>();
-        public List<Termo> PolinomioX
+        List<Termo> polinomioI = new List<Termo>();
+        public List<Termo> PolinomioI
         {
-            get { return polinomioX;  }
-            set { polinomioX = value; }
+            get { return polinomioI;  }
+            set { polinomioI = value; }
         }
 
         public Polinomio (Termo p)
         {
-            this.PolinomioX.Add(p);
+            this.PolinomioI.Add(p);
         }
 
         public void insere (Termo p)
         {
             // Verifica se ja existe
-            for (int i = 0; i < PolinomioX.Count; i++)
-                if (PolinomioX[i].X == p.X)
+            for (int i = 0; i < PolinomioI.Count; i++)
+                if (PolinomioI[i].I == p.I)
                 {
-                    PolinomioX[i].insere(p);
+                    PolinomioI[i].insere(p);
                     return;
                 }
 
             // Não existe, adiciona a lista
-            this.PolinomioX.Add(p);
+            this.PolinomioI.Add(p);
         }
 
         public double calcula (double parametro)
         {
             double soma = 0;
 
-            foreach (Termo i in this.PolinomioX)
+            foreach (Termo i in this.PolinomioI)
                 soma += i.calcula(parametro);
 
             return soma;

@@ -8,7 +8,7 @@ namespace GX102_02
 {
     class Termo
     {
-        int a, x;
+        int a, i;
 
         public int A
         {
@@ -16,28 +16,28 @@ namespace GX102_02
             set { a = value; }
         }
 
-        public int X
+        public int I
         {
-            get { return x; }
-            set { x = value;}
+            get { return i; }
+            set { i = value;}
         }
 
         // Constructor
-        public Termo (int ai, int xi)
+        public Termo (int ai, int ii)
         {
             this.A = ai;
-            this.X = xi;
+            this.I = ii;
         }
 
         public void insere (Termo p)
         {
             this.A = p.A;
-            this.X = p.X;
+            this.I = p.I;
         }
 
         public double calcula (double parametro)
         {
-            return this.A * Math.Pow(parametro, this.X);
+            return this.A * Math.Pow(parametro, this.I);
         }
     }
 }

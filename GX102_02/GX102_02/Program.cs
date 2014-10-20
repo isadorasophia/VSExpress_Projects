@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GX102_02
 {
+    // Programa computa valores de polinomios
     class Program
     {
         static void Main(string[] args)

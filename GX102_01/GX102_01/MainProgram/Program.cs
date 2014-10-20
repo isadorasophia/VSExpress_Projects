@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace GX102_01
 {
+    // Programa cria edificios e casas, com funções advindas de imóvel
     class Program
     {
         static void Main(string[] args)
         {
+            // Testa as classes criadas
             Edificio edificio = new Edificio();
 
             edificio.pinta("amarelo");
