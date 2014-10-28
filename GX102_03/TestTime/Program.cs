@@ -57,7 +57,9 @@ namespace TestTime
             Time t2 = t1;
 
             //t1.minutes = 100;
-            Console.WriteLine("t1={0} and t2={1}", t1, t2);            //If it is a struct, I receive 9:100 and 9:30
+            Console.WriteLine("t1={0} and t2={1}", t1, t2);
+
+            //If it is a struct, I receive 9:100 and 9:30
             //If it is a class, I receive 9:100 and 9:100 - t2 becomes a pointer to t1, and if I modify t1, it modifies t2
 
             // Finaliza o programa
