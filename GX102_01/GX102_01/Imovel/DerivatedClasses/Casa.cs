@@ -12,6 +12,7 @@ namespace GX102_01
         public Casa (int numPortas) 
         {
             // Esse int i recebe as propriedades de scope da função?
+            // Sim, não faz parte da classed
             int i;
 
             for (i = 0; i < numPortas; i++)

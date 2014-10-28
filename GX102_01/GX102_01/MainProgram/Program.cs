@@ -39,6 +39,10 @@ namespace GX102_01
 
             Console.WriteLine("A casa tem " + edificio.TotalDeAndares + " andar(es).\n");
 
+            int a;
+            a = int.Parse(Console.ReadLine());
+            Console.WriteLine(a);
+
             // Para finalizar a aplicação
             Console.ReadKey();
         }
