@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace TestTime
 {
     // O que define classes "fazerem parte do mesmo assembly?"
+    // Fazerem parte do mesmo namespace - um projeto esta todo contido em um namespace. Voce pode fazer referencia a namespaces na dll do projeto.
     // O que define quais namespaces eu posso acessar no meu programa? - pode acessar fora do assembly...
     struct Time
     {
@@ -16,7 +17,9 @@ namespace TestTime
         public int Minute { get { return this.minutes; } }
         public int Hour { get { return this.hours; } }
 
-        //Constructor - cant create a noon Time struct... "qualify it with a type name instead"
+        // Constructor - cant create a noon Time struct... "qualify it with a type name instead"
+        // Quando ele vai criar esse struct, cria outra struct e outra e outra e infinito... SO doesnt work sorry. ele sempre deve criar a struct
+        // antes dele mesmo ser criado. classes e structs são criadas "de dentro pra fora".
         public Time(int hh, int mm)
         {
             this.hours = hh + mm/60;
