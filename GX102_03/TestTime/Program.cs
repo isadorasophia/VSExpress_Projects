@@ -8,7 +8,7 @@ namespace TestTime
 {
     // O que define classes "fazerem parte do mesmo assembly?"
     // O que define quais namespaces eu posso acessar no meu programa? - pode acessar fora do assembly...
-    class Time
+    struct Time
     {
         private readonly int minutes;
         private readonly int hours;
