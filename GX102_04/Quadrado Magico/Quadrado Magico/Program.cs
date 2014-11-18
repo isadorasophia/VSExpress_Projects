@@ -10,8 +10,10 @@ namespace Quadrado_Magico
     {
         static void Main(string[] args)
         {
-            int size, i, j, sum;
+            int sum, size, i, j;
             int[,] magicSquare;
+
+            MagicSquare amIPerf;
 
             bool isMagic = true;
 
@@ -20,9 +22,11 @@ namespace Quadrado_Magico
 
             size = Int32.Parse(Console.ReadLine());
 
+            // Allocates the necessary memory
             lineNumbers = new string[size];
             magicSquare = new int[size, size];
 
+            // Reads input
             for (i = 0; i < size; i++)
             {
                 line = Console.ReadLine();
@@ -32,63 +36,35 @@ namespace Quadrado_Magico
                     magicSquare[i, j] = Int32.Parse(lineNumbers[j]);
             }
 
-            sum = SumDiagonals(magicSquare, size);
+            // Creates the square instance
+            amIPerf = new MagicSquare(magicSquare, size);
 
+            // Takes the value of the sum of both diagonals, -1 if they are not the same
+            sum = amIPerf.SumDiagonals();
+
+            // If they weren't the same
             if (sum <= 0) 
                 isMagic = false;
 
-            for (i = 0; i < size; i++)
-                if (sum != SumColumn(magicSquare, i, size))
+            // Checks if the sum of the columns diverge
+            for (i = 0; i < size && isMagic; i++)
+                if (sum != amIPerf.SumColumn(i))
                     isMagic = false;
 
+            // Same for the lines
             for (j = 0; j < size && isMagic; j++)
-                if (sum != SumLine(magicSquare, size, j))
+                if (sum != amIPerf.SumLine(j))
                     isMagic = false;
 
+            // Yay! Success!
             if (isMagic)
                 Console.WriteLine(sum);
+            // Nope
             else
                 Console.WriteLine("-1");
 
             // Exit
             Console.ReadKey();
-        }
-
-        // Since it keeps asking for an object reference, the method is static...
-        static int SumColumn(int[,] magicSquare, int column, int size)
-        {
-            int sum = 0, i;
-
-            for (i = 0; i < size; i++)
-                sum += magicSquare[i, column];
-
-            return sum;
-        }
-
-        static int SumLine(int[,] magicSquare, int size, int line)
-        {
-            int sum = 0, j;
-
-            for (j = 0; j < size; j++)
-                sum += magicSquare[line, j];
-
-            return sum;
-        }
-
-        static int SumDiagonals(int[,] magicSquare, int size)
-        {
-            int i, leftDiagonal = 0, rightDiagonal = 0;
-
-            for (i = 0; i < size; i++)
-                leftDiagonal += magicSquare[i, i];
-
-            for (i = size - 1; i >= 0; i--)
-                rightDiagonal += magicSquare[i, i];
-
-            if (leftDiagonal == rightDiagonal)
-                return leftDiagonal;
-            else
-                return -1;
         }
     }
 }
