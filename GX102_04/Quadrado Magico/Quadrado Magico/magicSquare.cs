@@ -62,5 +62,30 @@ namespace Quadrado_Magico
             else
                 return -1;
         }
+
+        // If the square is magic, returns the sum - else, returns -1
+        public int IsMagic()
+        {
+            int sum = 0, i;
+
+            // Takes the value of the sum of both diagonals, -1 if they are not the same
+            sum = this.SumDiagonals();
+
+            // If they weren't the same
+            if (sum == -1)
+                return -1;
+
+            // Checks if the sum of the columns diverge
+            for (i = 0; i < size; i++)
+                if (sum != this.SumColumn(i))
+                    return -1;
+
+            // Same for the lines
+            for (i = 0; i < size; i++)
+                if (sum != this.SumLine(i))
+                    return -1;
+
+            return sum;
+        }
     }
 }
