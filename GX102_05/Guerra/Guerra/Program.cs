@@ -10,18 +10,19 @@ namespace Guerra
     {
         static void Main(string[] args)
         {
-            int size, division;
-            int[] territory;
+            int size;
+            int[] territoryNumbers;
+            Territory territory;
 
             size = Int32.Parse(Console.ReadLine());
 
             // Allocates the necessary memory
-            territory = new int[size];
+            territoryNumbers = new int[size];
 
             // Reads input - is there a way to retry after a catch without dirty solutions?
             try
             {
-                territory = Console.ReadLine().Split(' ').Select(s => Int32.Parse(s)).ToArray();
+                territoryNumbers = Console.ReadLine().Split(' ').Select(s => Int32.Parse(s)).ToArray();
             }
             catch (Exception e)
             {
@@ -32,35 +33,15 @@ namespace Guerra
                 System.Environment.Exit(1);
             }
 
-            division = FindDivision(territory);
+            // Creathes the object - that was the cleanest way I found
+            territory = new Territory(territoryNumbers);
 
-            if (division != 0)
-                Console.WriteLine(division);
+            Console.WriteLine(territory.Division);
 
             // Exit
             Console.ReadKey();
         }
 
-        // Why all the methods have to be static?
-        static int FindDivision (int[] territory)
-        {
-            for (int i = 0; i < territory.Length - 1; i++)
-            {
-                if (VectorSum(territory, 0, i + 1) == VectorSum(territory, i + 1, territory.Length))
-                    return i + 1;
-            }
-
-            return 0;
-        }
-
-        static int VectorSum (int[] vector, int start, int end)
-        {
-            int sum = 0;
-
-            for (int i = start; i < end; i++)
-                sum += vector[i];
-
-            return sum;
-        }
+        // Why all the methods have to be static in the procedural way?
     }
 }
